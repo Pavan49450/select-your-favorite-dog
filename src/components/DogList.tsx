@@ -70,7 +70,7 @@ const DogList: FC = () => {
   return (
     <div>
       {!isLoading ? (
-        <Container>
+        <Container style={{ display: dogList.length > 4 ? "grid" : "flex" }}>
           {dogList.map((dog, index) => (
             <div key={index} style={{ position: "relative" }}>
               <Dog src={dog.dogImage} alt={breed} key={index}></Dog>
@@ -110,7 +110,9 @@ const DogList: FC = () => {
         </h2>
       </FTContainer>
       {!(favouriteDogs.length === 0) ? (
-        <FContainer>
+        <FContainer
+          style={{ display: favouriteDogs.length > 4 ? "grid" : "flex" }}
+        >
           {favouriteDogs.map((Image) => (
             <div
               style={{ position: "relative", width: "128px", height: "128px" }}
@@ -147,7 +149,6 @@ const DogList: FC = () => {
 };
 
 const Container = styled.div({
-  display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
   gap: "34px",
   alignItems: "center",
@@ -161,7 +162,6 @@ const Container = styled.div({
 });
 
 const FContainer = styled.div({
-  display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
   width: "560px",
   marginTop: "34px",
